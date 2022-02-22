@@ -18,11 +18,11 @@ def openBCIsample(sample):
 
 if __name__=='__main__':
     
-    board=OpenBCICyton(port='COM11', daisy=False)
-    board.start_stream(openBCIsample)
+    # board=OpenBCICyton(port='COM11', daisy=True)
+    # board.start_stream(openBCIsample)
 
     #for development while in hostel
-    # s=0
-    # while True:
-    #     openBCIsample(s)
-    #     time.sleep(0.004)
+    s=0
+    while True:
+        openBCIsample(s)
+        time.sleep(0.008)
