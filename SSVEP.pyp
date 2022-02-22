@@ -1,21 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
 <scheme description="" title="SSVEP" version="2.0">
 	<nodes>
-		<node id="0" name="FIR Filter" position="(332.0, 145.0)" project_name="NeuroPype" qualified_name="widgets.signal_processing.owfirfilter.OWFIRFilter" title="bandpass filter" uuid="26939834-3a48-40ee-b1c1-be705d0551b2" version="1.0.0" />
-		<node id="1" name="Time Series Plot" position="(492.0, 203.0)" project_name="NeuroPype" qualified_name="widgets.visualization.owtimeseriesplot.OWTimeSeriesPlot" title="filtered EEG data" uuid="25d2df7c-de50-423b-9411-cf50d1f32ea2" version="1.0.1" />
-		<node id="2" name="LSL Input" position="(53.0, 135.0)" project_name="NeuroPype" qualified_name="widgets.network.owlslinput.OWLSLInput" title="LSL Input" uuid="975556c0-7056-4bbf-b4c2-7d2ec1dad785" version="1.0.0" />
-		<node id="3" name="LSL Output" position="(486.0, 87.0)" project_name="NeuroPype" qualified_name="widgets.network.owlsloutput.OWLSLOutput" title="LSL Output" uuid="ea8ad4e6-a294-46fe-a8f7-e4eaf1433061" version="1.0.0" />
-		<node id="4" name="Inspect Data" position="(579.0, 357.0)" project_name="NeuroPype" qualified_name="widgets.visualization.owinspectdata.OWInspectData" title="Inspect Data" uuid="cc9ac9f6-83f4-4479-9e26-be0c904274e0" version="2.1.1" />
-		<node id="5" name="Time Series Plot" position="(207.0, 32.0)" project_name="NeuroPype" qualified_name="widgets.visualization.owtimeseriesplot.OWTimeSeriesPlot" title="raw EEG data" uuid="6ef38556-3c1e-42e1-9d57-c9647afe8bc0" version="1.0.1" />
-		<node id="6" name="Print To Console" position="(700.0, 349.0)" project_name="NeuroPype" qualified_name="widgets.diagnostics.owprinttoconsole.OWPrintToConsole" title="Print To Console" uuid="a9dd9e35-be6b-43ac-afd0-7bbd55cc30d4" version="1.0.0" />
-		<node id="7" name="FIR Filter" position="(198.0, 143.0)" project_name="NeuroPype" qualified_name="widgets.signal_processing.owfirfilter.OWFIRFilter" title="50Hz bandstop" uuid="0c81aead-a1c4-46bb-888a-654013a46fad" version="1.0.0" />
+		<node id="0" name="FIR Filter" position="(541.0, 160.0)" project_name="NeuroPype" qualified_name="widgets.signal_processing.owfirfilter.OWFIRFilter" title="bandpass filter" uuid="da7057d7-f8de-4678-b4be-6d1973103584" version="1.0.0" />
+		<node id="1" name="Time Series Plot" position="(728.0, 279.0)" project_name="NeuroPype" qualified_name="widgets.visualization.owtimeseriesplot.OWTimeSeriesPlot" title="filtered EEG data" uuid="93c5b59e-39f4-4dd9-8e2a-da8508ffb83e" version="1.0.1" />
+		<node id="2" name="LSL Input" position="(121.0, 151.0)" project_name="NeuroPype" qualified_name="widgets.network.owlslinput.OWLSLInput" title="LSL Input" uuid="f51b5d4d-9f08-48fb-94ea-af7402563d77" version="1.0.0" />
+		<node id="3" name="LSL Output" position="(633.0, 59.0)" project_name="NeuroPype" qualified_name="widgets.network.owlsloutput.OWLSLOutput" title="LSL Output" uuid="2eab2c21-1316-440a-bc85-29d617fc220d" version="1.0.0" />
+		<node id="4" name="Inspect Data" position="(922.0, 351.0)" project_name="NeuroPype" qualified_name="widgets.visualization.owinspectdata.OWInspectData" title="Inspect Data" uuid="2e068863-9596-49f2-8446-b131afaaed77" version="2.1.1" />
+		<node id="5" name="Time Series Plot" position="(275.0, 48.0)" project_name="NeuroPype" qualified_name="widgets.visualization.owtimeseriesplot.OWTimeSeriesPlot" title="raw EEG data" uuid="84c4e401-02d6-424a-873b-87147c37893b" version="1.0.1" />
+		<node id="6" name="Print To Console" position="(816.0, 349.0)" project_name="NeuroPype" qualified_name="widgets.diagnostics.owprinttoconsole.OWPrintToConsole" title="Print To Console" uuid="f4781ee4-e0a0-439b-aaa2-becdddf73f3c" version="1.0.0" />
+		<node id="7" name="FIR Filter" position="(439.0, 160.0)" project_name="NeuroPype" qualified_name="widgets.signal_processing.owfirfilter.OWFIRFilter" title="50Hz bandstop" uuid="ac337a42-c0ab-4f0a-938d-7263edc56790" version="1.0.0" />
+		<node id="8" name="Segmentation" position="(345.0, 162.0)" project_name="NeuroPype" qualified_name="widgets.formatting.owsegmentation.OWSegmentation" title="Segmentation" uuid="989d7db2-b21b-4641-bdef-f6a29bb88ab8" version="1.0.1" />
+		<node id="9" name="Assign Target Values" position="(244.0, 160.0)" project_name="NeuroPype" qualified_name="widgets.machine_learning.owassigntargets.OWAssignTargets" title="Assign Target Values" uuid="92f0e966-be64-4751-bc49-8764da61efe6" version="1.0.0" />
 	</nodes>
 	<links>
 		<link enabled="true" id="0" sink_channel="Data" sink_node_id="1" source_channel="Data" source_node_id="0" />
 		<link enabled="true" id="1" sink_channel="Data" sink_node_id="5" source_channel="Data" source_node_id="2" />
 		<link enabled="true" id="2" sink_channel="Data" sink_node_id="0" source_channel="Data" source_node_id="7" />
-		<link enabled="true" id="3" sink_channel="Data" sink_node_id="3" source_channel="Data" source_node_id="0" />
-		<link enabled="true" id="4" sink_channel="Data" sink_node_id="7" source_channel="Data" source_node_id="2" />
+		<link enabled="true" id="3" sink_channel="Data" sink_node_id="7" source_channel="Data" source_node_id="8" />
+		<link enabled="true" id="4" sink_channel="Data" sink_node_id="8" source_channel="Data" source_node_id="9" />
+		<link enabled="true" id="5" sink_channel="Data" sink_node_id="9" source_channel="Data" source_node_id="2" />
+		<link enabled="true" id="6" sink_channel="Data" sink_node_id="3" source_channel="Data" source_node_id="0" />
 	</links>
 	<annotations />
 	<thumbnail />
@@ -45,13 +49,13 @@ YW5nZXEkSwNYBQAAAHRpdGxlcSVYEQAAAGZpbHRlcmVkIEVFRyBkYXRhcSZYCgAAAHplcm9fY29s
 b3JxJ1gHAAAAIzdGN0Y3RnEoWAgAAAB6ZXJvbWVhbnEpiHUu
 </properties>
 		<properties format="pickle" node_id="2">gAN9cQAoWA0AAABjaGFubmVsX25hbWVzcQFdcQJYCwAAAGRpYWdub3N0aWNzcQOJWAwAAABtYXJr
-ZXJfcXVlcnlxBFgAAAAAcQVYDAAAAG1heF9ibG9ja2xlbnEGTQAEWAoAAABtYXhfYnVmbGVucQdL
-HlgMAAAAbWF4X2NodW5rbGVucQhLAFgMAAAAbm9taW5hbF9yYXRlcQlYDQAAACh1c2UgZGVmYXVs
-dClxClgFAAAAcXVlcnlxC1gSAAAAbmFtZT0nb3BlbkJDSWRhdGEncQxYBwAAAHJlY292ZXJxDYhY
-FAAAAHJlc29sdmVfbWluaW11bV90aW1lcQ5HP+AAAAAAAABYEwAAAHNhdmVkV2lkZ2V0R2VvbWV0
-cnlxD2NzaXAKX3VucGlja2xlX3R5cGUKcRBYDAAAAFB5UXQ0LlF0Q29yZXERWAoAAABRQnl0ZUFy
-cmF5cRJDLgHZ0MsAAQAAAAADAwAAAX0AAAR6AAACWQAAAwsAAAGcAAAEcgAAAlEAAAAAAABxE4Vx
-FIdxFVJxFlgOAAAAc2V0X2JyZWFrcG9pbnRxF4l1Lg==
+ZXJfcXVlcnlxBFgXAAAAbmFtZT0nY3Jvc3NoYWlyTWFya2VycydxBVgMAAAAbWF4X2Jsb2NrbGVu
+cQZNAARYCgAAAG1heF9idWZsZW5xB0seWAwAAABtYXhfY2h1bmtsZW5xCEsAWAwAAABub21pbmFs
+X3JhdGVxCVgNAAAAKHVzZSBkZWZhdWx0KXEKWAUAAABxdWVyeXELWBIAAABuYW1lPSdvcGVuQkNJ
+ZGF0YSdxDFgHAAAAcmVjb3ZlcnENiFgUAAAAcmVzb2x2ZV9taW5pbXVtX3RpbWVxDkc/4AAAAAAA
+AFgTAAAAc2F2ZWRXaWRnZXRHZW9tZXRyeXEPY3NpcApfdW5waWNrbGVfdHlwZQpxEFgMAAAAUHlR
+dDQuUXRDb3JlcRFYCgAAAFFCeXRlQXJyYXlxEkMuAdnQywABAAAAAAMDAAABfQAABHoAAAJZAAAD
+CwAAAZwAAARyAAACUQAAAAAAAHEThXEUh3EVUnEWWA4AAABzZXRfYnJlYWtwb2ludHEXiXUu
 </properties>
 		<properties format="pickle" node_id="3">gAN9cQAoWAkAAABjaHVua19sZW5xAUsAWBUAAABpZ25vcmVfc2lnbmFsX2NoYW5nZWRxAolYCwAA
 AG1hcmtlcl9uYW1lcQNYEQAAAE91dFN0cmVhbS1tYXJrZXJzcQRYEAAAAG1hcmtlcl9zb3VyY2Vf
@@ -107,6 +111,22 @@ CgAAAFFCeXRlQXJyYXlxEUMuAdnQywABAAAAAAHvAAABAwAAA2YAAAG2AAAB9wAAASIAAANeAAAB
 rgAAAAAAAHEShXETh3EUUnEVWA4AAABzZXRfYnJlYWtwb2ludHEWiVgKAAAAc3RvcF9hdHRlbnEX
 R0BJAAAAAAAAdS4=
 </properties>
+		<properties format="pickle" node_id="8">gAN9cQAoWBEAAABrZWVwX21hcmtlcl9jaHVua3EBiVgOAAAAbWF4X2dhcF9sZW5ndGhxAkc/yZmZ
+mZmZmlgPAAAAb25saW5lX2Vwb2NoaW5ncQNYDQAAAG1hcmtlci1sb2NrZWRxBFgNAAAAc2FtcGxl
+X29mZnNldHEFSwBYEwAAAHNhdmVkV2lkZ2V0R2VvbWV0cnlxBmNzaXAKX3VucGlja2xlX3R5cGUK
+cQdYDAAAAFB5UXQ0LlF0Q29yZXEIWAoAAABRQnl0ZUFycmF5cQlDLgHZ0MsAAQAAAAAB7wAAAOAA
+AANmAAAB2AAAAfcAAAD/AAADXgAAAdAAAAAAAABxCoVxC4dxDFJxDVgOAAAAc2VsZWN0X21hcmtl
+cnNxDlgNAAAAKHVzZSBkZWZhdWx0KXEPWA4AAABzZXRfYnJlYWtwb2ludHEQiVgLAAAAdGltZV9i
+b3VuZHNxEV1xEihLAEsDZVgHAAAAdmVyYm9zZXETiXUu
+</properties>
+		<properties format="pickle" node_id="9">gAN9cQAoWBIAAABhbHNvX2xlZ2FjeV9vdXRwdXRxAYlYDgAAAGlzX2NhdGVnb3JpY2FscQKJWAkA
+AABpdl9jb2x1bW5xA1gGAAAATWFya2VycQRYBwAAAG1hcHBpbmdxBX1xBihYBQAAAFNUQVJUcQdL
+AFgEAAAAU1RPUHEISwF1WA4AAABtYXBwaW5nX2Zvcm1hdHEJWAYAAABjb21wYXRxClgTAAAAc2F2
+ZWRXaWRnZXRHZW9tZXRyeXELY3NpcApfdW5waWNrbGVfdHlwZQpxDFgMAAAAUHlRdDQuUXRDb3Jl
+cQ1YCgAAAFFCeXRlQXJyYXlxDkMuAdnQywABAAAAAAHvAAABAwAAA2YAAAG2AAAB9wAAASIAAANe
+AAABrgAAAAAAAHEPhXEQh3ERUnESWA4AAABzZXRfYnJlYWtwb2ludHETiVgRAAAAc3VwcG9ydF93
+aWxkY2FyZHNxFIlYCwAAAHVzZV9udW1iZXJzcRWJWAcAAAB2ZXJib3NlcRaJdS4=
+</properties>
 	</node_properties>
 	<patch>{
     "description": {
@@ -139,13 +159,25 @@ R0BJAAAAAAAAdS4=
         [
             "node3",
             "data",
-            "node8",
+            "node10",
             "data"
         ],
         [
             "node8",
             "data",
             "node1",
+            "data"
+        ],
+        [
+            "node9",
+            "data",
+            "node8",
+            "data"
+        ],
+        [
+            "node10",
+            "data",
+            "node9",
             "data"
         ]
     ],
@@ -210,7 +242,62 @@ R0BJAAAAAAAAdS4=
                     "value": 50.0
                 }
             },
-            "uuid": "26939834-3a48-40ee-b1c1-be705d0551b2"
+            "uuid": "da7057d7-f8de-4678-b4be-6d1973103584"
+        },
+        "node10": {
+            "class": "AssignTargets",
+            "module": "neuropype.nodes.machine_learning.AssignTargets",
+            "params": {
+                "also_legacy_output": {
+                    "customized": false,
+                    "type": "BoolPort",
+                    "value": false
+                },
+                "is_categorical": {
+                    "customized": false,
+                    "type": "BoolPort",
+                    "value": false
+                },
+                "iv_column": {
+                    "customized": false,
+                    "type": "StringPort",
+                    "value": "Marker"
+                },
+                "mapping": {
+                    "customized": true,
+                    "type": "Port",
+                    "value": {
+                        "START": 0,
+                        "STOP": 1
+                    }
+                },
+                "mapping_format": {
+                    "customized": false,
+                    "type": "EnumPort",
+                    "value": "compat"
+                },
+                "set_breakpoint": {
+                    "customized": false,
+                    "type": "BoolPort",
+                    "value": false
+                },
+                "support_wildcards": {
+                    "customized": false,
+                    "type": "BoolPort",
+                    "value": false
+                },
+                "use_numbers": {
+                    "customized": false,
+                    "type": "BoolPort",
+                    "value": false
+                },
+                "verbose": {
+                    "customized": false,
+                    "type": "BoolPort",
+                    "value": false
+                }
+            },
+            "uuid": "92f0e966-be64-4751-bc49-8764da61efe6"
         },
         "node2": {
             "class": "TimeSeriesPlot",
@@ -347,7 +434,7 @@ R0BJAAAAAAAAdS4=
                     "value": true
                 }
             },
-            "uuid": "25d2df7c-de50-423b-9411-cf50d1f32ea2"
+            "uuid": "93c5b59e-39f4-4dd9-8e2a-da8508ffb83e"
         },
         "node3": {
             "class": "LSLInput",
@@ -364,7 +451,15 @@ R0BJAAAAAAAAdS4=
                         "Ch4",
                         "Ch5",
                         "Ch6",
-                        "Ch7"
+                        "Ch7",
+                        "Ch8",
+                        "Ch9",
+                        "Ch10",
+                        "Ch11",
+                        "Ch12",
+                        "Ch13",
+                        "Ch14",
+                        "Ch15"
                     ]
                 },
                 "diagnostics": {
@@ -373,9 +468,9 @@ R0BJAAAAAAAAdS4=
                     "value": false
                 },
                 "marker_query": {
-                    "customized": false,
+                    "customized": true,
                     "type": "StringPort",
-                    "value": ""
+                    "value": "name='crosshairMarkers'"
                 },
                 "max_blocklen": {
                     "customized": false,
@@ -418,7 +513,7 @@ R0BJAAAAAAAAdS4=
                     "value": false
                 }
             },
-            "uuid": "975556c0-7056-4bbf-b4c2-7d2ec1dad785"
+            "uuid": "f51b5d4d-9f08-48fb-94ea-af7402563d77"
         },
         "node4": {
             "class": "LSLOutput",
@@ -495,7 +590,7 @@ R0BJAAAAAAAAdS4=
                     "value": false
                 }
             },
-            "uuid": "ea8ad4e6-a294-46fe-a8f7-e4eaf1433061"
+            "uuid": "2eab2c21-1316-440a-bc85-29d617fc220d"
         },
         "node5": {
             "class": "InspectData",
@@ -597,7 +692,7 @@ R0BJAAAAAAAAdS4=
                     "value": "Inspect Data Packet"
                 }
             },
-            "uuid": "cc9ac9f6-83f4-4479-9e26-be0c904274e0"
+            "uuid": "2e068863-9596-49f2-8446-b131afaaed77"
         },
         "node6": {
             "class": "TimeSeriesPlot",
@@ -734,7 +829,7 @@ R0BJAAAAAAAAdS4=
                     "value": true
                 }
             },
-            "uuid": "6ef38556-3c1e-42e1-9d57-c9647afe8bc0"
+            "uuid": "84c4e401-02d6-424a-873b-87147c37893b"
         },
         "node7": {
             "class": "PrintToConsole",
@@ -786,7 +881,7 @@ R0BJAAAAAAAAdS4=
                     "value": false
                 }
             },
-            "uuid": "a9dd9e35-be6b-43ac-afd0-7bbd55cc30d4"
+            "uuid": "f4781ee4-e0a0-439b-aaa2-becdddf73f3c"
         },
         "node8": {
             "class": "FIRFilter",
@@ -846,7 +941,57 @@ R0BJAAAAAAAAdS4=
                     "value": 50.0
                 }
             },
-            "uuid": "0c81aead-a1c4-46bb-888a-654013a46fad"
+            "uuid": "ac337a42-c0ab-4f0a-938d-7263edc56790"
+        },
+        "node9": {
+            "class": "Segmentation",
+            "module": "neuropype.nodes.formatting.Segmentation",
+            "params": {
+                "keep_marker_chunk": {
+                    "customized": false,
+                    "type": "BoolPort",
+                    "value": false
+                },
+                "max_gap_length": {
+                    "customized": false,
+                    "type": "FloatPort",
+                    "value": 0.2
+                },
+                "online_epoching": {
+                    "customized": false,
+                    "type": "EnumPort",
+                    "value": "marker-locked"
+                },
+                "sample_offset": {
+                    "customized": false,
+                    "type": "IntPort",
+                    "value": 0
+                },
+                "select_markers": {
+                    "customized": false,
+                    "type": "ListPort",
+                    "value": null
+                },
+                "set_breakpoint": {
+                    "customized": false,
+                    "type": "BoolPort",
+                    "value": false
+                },
+                "time_bounds": {
+                    "customized": true,
+                    "type": "ListPort",
+                    "value": [
+                        0,
+                        3
+                    ]
+                },
+                "verbose": {
+                    "customized": false,
+                    "type": "BoolPort",
+                    "value": false
+                }
+            },
+            "uuid": "989d7db2-b21b-4641-bdef-f6a29bb88ab8"
         }
     },
     "version": 1.1
