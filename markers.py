@@ -11,9 +11,8 @@ markers = {
         'stop': ['STOP'],
         'running': [99],
         }
-i = 0  
 while True:
     outlet.push_sample(markers['start'])
     time.sleep(5)
-    outlet.push_sample(markers['stop'])
-    time.sleep(1)
+#     outlet.push_sample(markers['stop'])
+#     time.sleep(1)
