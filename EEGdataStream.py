@@ -14,15 +14,15 @@ def openBCIsample(sample):
     # data=np.array(board.start_stream(openBCIsample))*SCALE_FACTOR_EEG
     data=np.array([randint(100,600000) for i in range(0,8)])
     outlet_eeg.push_sample(data)
-    print(data)
+    # print(data)
 
 if __name__=='__main__':
     
-    # board=OpenBCICyton(port='COM5', daisy=False)
-    # board.start_stream(openBCIsample)
+    board=OpenBCICyton(port='COM5', daisy=False)
+    board.start_stream(openBCIsample)
 
     #for development while in hostel
-    s=0
-    while True:
-        openBCIsample(s)
-        time.sleep(0.004)
+    # s=0
+    # while True:
+    #     openBCIsample(s)
+    #     time.sleep(0.004)

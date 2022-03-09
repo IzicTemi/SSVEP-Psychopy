@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on March 09, 2022, at 06:22
+    on March 09, 2022, at 06:27
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -29,7 +29,31 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+from pylsl import StreamInfo, StreamOutlet, resolve_stream, StreamInlet
+from scripts import cca_module as cc
+from scripts import ssvep_files_live as su
+'''
+info = StreamInfo(name='crosshairMarkers', type='Markers', channel_count=1,
+                  channel_format='string', source_id='openBCIdata8ch')
+# Initialize the stream.
+outlet = StreamOutlet(info)
 
+markers = {
+        'start': ['START'],
+        'stop': ['STOP'],
+        'running': [99],
+        }
+'''
+# Initialize variables
+window_len = 3
+shift_len = 1
+sample_rate = 250
+duration = int(window_len*sample_rate)
+flicker_freq = np.array([9.25, 11.25, 13.25, 9.75, 11.75, 13.75, 
+                       10.25, 12.25, 14.25, 10.75, 12.75, 14.75])
+
+
+streams=resolve_stream('name','openBCIdata')
 
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
@@ -52,7 +76,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='D:\\Desktop\\SSVEP-Psychopy\\Keyboard_GUI_lastrun.py',
+    originPath='D:\\Desktop\\SSVEP-Psychopy\\Keyboard_GUI.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -96,7 +120,8 @@ welcome = visual.TextStim(win=win, name='welcome',
 instructions = visual.TextStim(win=win, name='instructions',
     text='Instructions\n\n1. After the crosshair, when the keypad is presented, stare at the intended button\n\n2. Try not to blink when the number is flashing\n\n3. When the flashing stops, the signals are decoded and the decoded button is actuated\n\n4. You may blink until the next crosshair.\n\nPlease press a button to continue',
     font='Open Sans',
-    units='cm', pos=(-1, -1), height=0.6, wrapWidth=None, ori=0.0, 
+    units='cm', pos=(-1, -1), height=0.8, wrapWidth=None, ori=0.0, 
+    alignText='left',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-1.0);
@@ -347,7 +372,7 @@ thisExp.nextEntry()
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=50.0, method='sequential', 
+trials = data.TrialHandler(nReps=100.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='trials')
@@ -383,7 +408,13 @@ for thisTrial in trials:
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
     start_3Clock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
     frameN = -1
-    
+    # Push marker
+    # outlet.push_sample(markers['start'])
+
+    # Start pulling data on showing crosshair
+    inlet=StreamInlet(streams[0])
+    chunk_data = np.array(inlet.pull_chunk(4, 1500)[0], dtype=object)
+
     # -------Run Routine "start_3"-------
     while continueRoutine and routineTimer.getTime() > 0:
         # get current time
@@ -438,7 +469,7 @@ for thisTrial in trials:
     continueRoutine = True
     routineTimer.add(5.000000)
     # update component parameters for each repeat
-    textbox.reset()
+    # textbox.reset()
     textbox.setText('>>')
     # keep track of which components have finished
     expComponents = [textbox, i7, i8, i9, i4, i5, i6, i1, i2, i3, idel, i0, ienter]
@@ -500,7 +531,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i7, 'tStopRefresh')  # time at next scr refresh
                 i7.setAutoDraw(False)
         if i7.status == STARTED:  # only update if drawing
-            i7.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*5*(frameN/60))), log=False)
+            i7.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*10.25*(frameN/60))), log=False)
         
         # *i8* updates
         if i8.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -519,7 +550,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i8, 'tStopRefresh')  # time at next scr refresh
                 i8.setAutoDraw(False)
         if i8.status == STARTED:  # only update if drawing
-            i8.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*5.25*(frameN/60))), log=False)
+            i8.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*12.25*(frameN/60))), log=False)
         
         # *i9* updates
         if i9.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -538,7 +569,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i9, 'tStopRefresh')  # time at next scr refresh
                 i9.setAutoDraw(False)
         if i9.status == STARTED:  # only update if drawing
-            i9.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*5.5*(frameN/60))), log=False)
+            i9.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*14.25*(frameN/60))), log=False)
         
         # *i4* updates
         if i4.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -557,7 +588,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i4, 'tStopRefresh')  # time at next scr refresh
                 i4.setAutoDraw(False)
         if i4.status == STARTED:  # only update if drawing
-            i4.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*5.75*(frameN/60))), log=False)
+            i4.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*9.75*(frameN/60))), log=False)
         
         # *i5* updates
         if i5.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -576,7 +607,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i5, 'tStopRefresh')  # time at next scr refresh
                 i5.setAutoDraw(False)
         if i5.status == STARTED:  # only update if drawing
-            i5.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*6*(frameN/60))), log=False)
+            i5.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*11.75*(frameN/60))), log=False)
         
         # *i6* updates
         if i6.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -595,7 +626,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i6, 'tStopRefresh')  # time at next scr refresh
                 i6.setAutoDraw(False)
         if i6.status == STARTED:  # only update if drawing
-            i6.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*6.25*(frameN/60))), log=False)
+            i6.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*13.75*(frameN/60))), log=False)
         
         # *i1* updates
         if i1.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -614,7 +645,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i1, 'tStopRefresh')  # time at next scr refresh
                 i1.setAutoDraw(False)
         if i1.status == STARTED:  # only update if drawing
-            i1.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*6.5*(frameN/60))), log=False)
+            i1.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*9.25*(frameN/60))), log=False)
         
         # *i2* updates
         if i2.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -633,7 +664,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i2, 'tStopRefresh')  # time at next scr refresh
                 i2.setAutoDraw(False)
         if i2.status == STARTED:  # only update if drawing
-            i2.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*6.75*(frameN/60))), log=False)
+            i2.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*11.25*(frameN/60))), log=False)
         
         # *i3* updates
         if i3.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -652,7 +683,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i3, 'tStopRefresh')  # time at next scr refresh
                 i3.setAutoDraw(False)
         if i3.status == STARTED:  # only update if drawing
-            i3.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*7*(frameN/60))), log=False)
+            i3.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*13.25*(frameN/60))), log=False)
         
         # *idel* updates
         if idel.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -671,7 +702,7 @@ for thisTrial in trials:
                 win.timeOnFlip(idel, 'tStopRefresh')  # time at next scr refresh
                 idel.setAutoDraw(False)
         if idel.status == STARTED:  # only update if drawing
-            idel.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*7.25*(frameN/60))), log=False)
+            idel.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*12.75*(frameN/60))), log=False)
         
         # *i0* updates
         if i0.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -690,7 +721,7 @@ for thisTrial in trials:
                 win.timeOnFlip(i0, 'tStopRefresh')  # time at next scr refresh
                 i0.setAutoDraw(False)
         if i0.status == STARTED:  # only update if drawing
-            i0.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*7.5*(frameN/60))), log=False)
+            i0.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*10.75*(frameN/60))), log=False)
         
         # *ienter* updates
         if ienter.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
@@ -709,8 +740,19 @@ for thisTrial in trials:
                 win.timeOnFlip(ienter, 'tStopRefresh')  # time at next scr refresh
                 ienter.setAutoDraw(False)
         if ienter.status == STARTED:  # only update if drawing
-            ienter.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*7.75*(frameN/60))), log=False)
+            ienter.setOpacity(1 if t < 2 else 0.5*(1+sin(2*pi*14.75*(frameN/60))), log=False)
         
+        # Filter data
+        filtered_data = su.get_filtered_eeg(chunk_data, 7.25, 90, 2, sample_rate)
+        
+        # Segment data
+        data = su.get_segmented_epochs(filtered_data, window_len, shift_len, sample_rate)
+
+        # Classify data
+        data = data[:,0,:]
+        key = cc.predicted_value(data)
+        print(key)
+
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             core.quit()
